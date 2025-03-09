@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о соединении</title>
+</head>
+<body>
+<h2>Информация о соединении</h2>
+<table class="table table-striped caption-top">
+    <thead>
+    <tr>
+        <th>Параметр</th>
+        <th>Значение</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="inf: ${info}">
+        <td th:text="${inf.key}">Свойство</td>
+        <td th:text="${inf.value}">Значение</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
