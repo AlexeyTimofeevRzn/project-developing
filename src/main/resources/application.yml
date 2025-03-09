@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: project-developing
+
+datasource:
+  url: jdbc:postgresql://localhost:5432/project-developing
+  user: postgres
