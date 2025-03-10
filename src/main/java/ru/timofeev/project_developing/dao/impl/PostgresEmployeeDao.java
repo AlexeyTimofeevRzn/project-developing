@@ -8,6 +8,7 @@ import ru.timofeev.project_developing.util.mapper.EmployeeMapper;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,7 +31,6 @@ public class PostgresEmployeeDao implements IEmployeeDao {
         ) {
             statement.setLong(1, id);
             var resultSet = statement.executeQuery();
-            var result = new ArrayList<Employee>();
             resultSet.next();
             return EmployeeMapper.map(resultSet);
         } catch (Exception e) {
@@ -46,9 +46,12 @@ public class PostgresEmployeeDao implements IEmployeeDao {
         ) {
             statement.setString(1, login);
             var resultSet = statement.executeQuery();
-            resultSet.next();
-            return EmployeeMapper.map(resultSet);
-        } catch (Exception e) {
+            if (resultSet.next()) {
+                return EmployeeMapper.map(resultSet);
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
             return new Employee();
         }

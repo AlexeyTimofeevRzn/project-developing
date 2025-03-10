@@ -8,7 +8,6 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
-@NoArgsConstructor
 public class Employee {
 
     private Long id;
@@ -21,5 +20,5 @@ public class Employee {
 
     private String surname;
 
-    private Date birhdate;
+    private Date birthDate;
 }

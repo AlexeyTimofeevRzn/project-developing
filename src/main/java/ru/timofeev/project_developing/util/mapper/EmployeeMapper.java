@@ -26,7 +26,7 @@ public class EmployeeMapper {
         employee.setSurname(resultSet.getString(SURNAME_ATTRIBUTE));
         employee.setName(resultSet.getString(NAME_ATTRIBUTE));
         employee.setPassword(resultSet.getString(PASSWORD_ATTRIBUTE));
-        employee.setBirhdate(Date.valueOf(resultSet.getString(BIRTHDATE_ATTRIBUTE)));
+        employee.setBirthDate(Date.valueOf(resultSet.getString(BIRTHDATE_ATTRIBUTE)));
         return employee;
     }
 }
