@@ -26,7 +26,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
+    <tr th:if="${employee}">
         <td th:text="${employee.getId()}">Id</td>
         <td th:text="${employee.getLogin()}">Login</td>
         <td th:text="${employee.getName()}">Name</td>
