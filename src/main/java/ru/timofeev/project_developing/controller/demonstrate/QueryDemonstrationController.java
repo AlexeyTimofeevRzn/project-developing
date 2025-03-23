@@ -1,4 +1,4 @@
-package ru.timofeev.project_developing.controller;
+package ru.timofeev.project_developing.controller.demonstrate;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
