@@ -39,13 +39,18 @@ public class Project {
     private Date plannedDateOfEnd;
 
     @Column(name = "status")
+    @Enumerated(value = EnumType.STRING)
     private ProjectStatus status;
 
     @Column(name = "type")
+    @Enumerated(value = EnumType.STRING)
     private ProjectType type;
 
     @Column(name = "planned_payload")
     private Long plannedPayload;
+
+    @Column(name = "fact_payload")
+    private Long factPayload;
 
     @Column(name = "responsible_login")
     private String responsibleLogin;

@@ -44,7 +44,7 @@
             <td th:text="${project.status}"></td>
             <td th:text="${project.type}"></td>
             <td th:text="${project.plannedPayload}"></td>
-            <td th:text="${project.responsibleLogin}"></td>
+            <td><a th:href="@{/users/byLogin/{login}(login=${project.responsibleLogin})}" th:text="${project.responsibleLogin}"></a></td>
         </tr>
         </tbody>
     </table>
