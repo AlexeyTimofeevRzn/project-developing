@@ -16,8 +16,8 @@ public class DatasourceConnectionInfoService implements IConnectionInfoService {
 
     private final DataSource dataSource;
 
-    public DatasourceConnectionInfoService(DataSource hikariDataSource) {
-        this.dataSource = hikariDataSource;
+    public DatasourceConnectionInfoService(DataSource postgresDataSource) {
+        this.dataSource = postgresDataSource;
     }
 
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form method="post" th:action="@{/demonstration/dynamic-query}">
+    <input id="sql" placeholder="Введите SQL" type="text" th:name="sql"/>
+    <input type="submit" value="Найти сотрудников через SQL запрос">
+</form>
+
+
+<h2>Использование PreparedStatement</h2>
+
+<h3>Параметризованный запрос</h3>
+<table class="table table-striped caption-top">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Login</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Birthdate</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="i : ${foundedEmployees}">
+        <td th:text="${i.getId()}">Id</td>
+        <td th:text="${i.getLogin()}">Login</td>
+        <td th:text="${i.getName()}">Name</td>
+        <td th:text="${i.getSurname()}">Surname</td>
+        <td th:text="${i.getBirthDate()}">Birthdate</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

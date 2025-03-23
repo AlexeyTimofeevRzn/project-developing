@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form method="post" th:action="@{/demonstration/parametrized-query}">
+    <input id="login" placeholder="Введите логин" type="text" th:name="login"/>
+    <input type="submit" value="Найти сотрудника по логину">
+</form>
+
+
+<h2>Использование PreparedStatement</h2>
+
+<h3>Параметризованный запрос</h3>
+<table class="table table-striped caption-top">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Login</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Birthdate</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${employee}">
+        <td th:text="${employee.getId()}">Id</td>
+        <td th:text="${employee.getLogin()}">Login</td>
+        <td th:text="${employee.getName()}">Name</td>
+        <td th:text="${employee.getSurname()}">Surname</td>
+        <td th:text="${employee.getBirthDate()}">Birthdate</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
