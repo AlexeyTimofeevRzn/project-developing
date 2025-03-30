@@ -48,4 +48,9 @@ public class JpaEmployeeService implements IEmployeeService {
     public List<Employee> getEmployeesUsingDynamicQuery(String query) {
         return null;
     }
+
+    @Override
+    public void saveOrUpdateEmployee(Employee employee) {
+        employeeRepository.save(employee);
+    }
 }

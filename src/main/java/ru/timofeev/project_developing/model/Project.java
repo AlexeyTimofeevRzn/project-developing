@@ -3,7 +3,6 @@ package ru.timofeev.project_developing.model;
 import jakarta.persistence.*;
 import lombok.*;
 import ru.timofeev.project_developing.enums.ProjectStatus;
-import ru.timofeev.project_developing.enums.ProjectType;
 
 import java.sql.Date;
 
@@ -42,8 +41,12 @@ public class Project {
     @Enumerated(value = EnumType.STRING)
     private ProjectStatus status;
 
-    @Column(name = "type")
-    @Enumerated(value = EnumType.STRING)
+//    @Column(name = "type")
+//    @Enumerated(value = EnumType.STRING)
+//    private ProjectType type;
+
+    @ManyToOne
+    @JoinColumn(name = "project_type", nullable = true)
     private ProjectType type;
 
     @Column(name = "planned_payload")

@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PostgresProjectService implements IProjectService {
+public class ProjectService implements IProjectService {
 
     private ProjectRepository projectRepository;
 
-    public PostgresProjectService(ProjectRepository repository) {
+    public ProjectService(ProjectRepository repository) {
         this.projectRepository = repository;
     }
 

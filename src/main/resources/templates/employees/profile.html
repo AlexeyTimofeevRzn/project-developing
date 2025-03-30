@@ -59,6 +59,20 @@
                         <strong>Логин:</strong> <span th:text="${employee.login}"></span><br>
                         <strong>Дата рождения:</strong> <span th:text="${employee.birthDate}"></span><br>
                     </p>
+
+                    <!-- Информация о занятости в проектах -->
+                    <h5 class="mt-4">Занятость в проектах:</h5>
+                    <ul th:if="${!assignments.isEmpty()}" class="list-group">
+                        <li th:each="assignment : ${assignments}" class="list-group-item">
+                            <strong>Проект:</strong> <span th:text="${assignment.project.name}"></span><br>
+                            <strong>Роль:</strong> <span th:text="${assignment.role}"></span>
+                        </li>
+                    </ul>
+                    <p th:if="${assignments.isEmpty()}" class="text-muted">Сотрудник не участвует ни в одном проекте.</p>
+
+                    <div class="text-center">
+                        <a th:href="@{/users/{id}/set-on-project(id=${employee.id})}" class="btn btn-custom">Назначить на проект</a>
+                    </div>
                 </div>
             </div>
         </div>

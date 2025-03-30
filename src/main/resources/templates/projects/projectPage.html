@@ -28,7 +28,18 @@
                 <strong>Планируемая нагрузка:</strong> <span th:text="${project.plannedPayload}"></span><br>
                 <strong>Ответственный:</strong> <span th:text="${project.responsibleLogin}"></span>
             </p>
-            <a href="/project/list" class="btn btn-primary">Вернуться к списку проектов</a>
+
+            <!-- Информация о занятости сотрудников -->
+            <h5 class="mt-4">Участники проекта:</h5>
+            <ul th:if="${!assignments.isEmpty()}" class="list-group">
+                <li th:each="assignment : ${assignments}" class="list-group-item">
+                    <strong>Сотрудник:</strong> <span th:text="${assignment.employee.name + ' ' + assignment.employee.surname}"></span><br>
+                    <strong>Роль:</strong> <span th:text="${assignment.role}"></span>
+                </li>
+            </ul>
+            <p th:if="${assignments.isEmpty()}" class="text-muted">В проекте пока нет участников.</p>
+
+            <a href="/project/list" class="btn btn-primary" style="alignment: center">Вернуться к списку проектов</a>
         </div>
     </div>
 </div>

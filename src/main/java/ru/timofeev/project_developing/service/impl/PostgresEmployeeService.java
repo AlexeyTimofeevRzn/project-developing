@@ -36,4 +36,9 @@ public class PostgresEmployeeService implements IEmployeeService {
     public List<Employee> getEmployeesUsingDynamicQuery(String query) {
         return employeeDao.getEmployeesByQuery(query);
     }
+
+    @Override
+    public void saveOrUpdateEmployee(Employee employee) {
+
+    }
 }

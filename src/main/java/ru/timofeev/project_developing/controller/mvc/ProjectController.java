@@ -1,24 +1,27 @@
 package ru.timofeev.project_developing.controller.mvc;
 
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.timofeev.project_developing.enums.ProjectStatus;
 import ru.timofeev.project_developing.enums.ProjectType;
+import ru.timofeev.project_developing.model.EmployeeProjectRole;
 import ru.timofeev.project_developing.model.Project;
-import ru.timofeev.project_developing.model.dto.ProjectDTO;
+import ru.timofeev.project_developing.service.IEmployeeProjectRoleService;
 import ru.timofeev.project_developing.service.IProjectService;
-import ru.timofeev.project_developing.util.mapper.ProjectMapper;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/project")
 public class ProjectController {
 
     private IProjectService projectService;
+    private IEmployeeProjectRoleService projectRoleService;
 
-    public ProjectController(IProjectService projectService) {
+    public ProjectController(IProjectService projectService, IEmployeeProjectRoleService roleService) {
         this.projectService = projectService;
+        this.projectRoleService = roleService;
     }
 
     @GetMapping("/new")
@@ -33,8 +36,6 @@ public class ProjectController {
     @PostMapping("/create")
     public String createNewProject(@ModelAttribute Project projectDTO, Model model) {
         // тут проверять, что такой челик есть в бд
-//        Project savedProject = ProjectMapper.mapToProject(projectDTO);
-//        projectService.saveOrUpdateProject(savedProject);
         projectService.saveOrUpdateProject(projectDTO);
         return "main";
     }
@@ -49,7 +50,9 @@ public class ProjectController {
     @GetMapping("/{id}")
     public String showProjectDetails(@PathVariable Long id, Model model) {
         Project project = projectService.getProjectById(id); // Получение проекта по ID
+        List<EmployeeProjectRole> projectRoleList = projectRoleService.getProjectRolesByProjectId(id);
         model.addAttribute("project", project); // Передача проекта в шаблон
+        model.addAttribute("assignments", projectRoleList);
         return "projects/projectPage";
     }
 }

@@ -13,4 +13,6 @@ public interface IEmployeeService {
     List<Employee> getEmployees();
 
     List<Employee> getEmployeesUsingDynamicQuery(String query);
+
+    void saveOrUpdateEmployee(Employee employee);
 }

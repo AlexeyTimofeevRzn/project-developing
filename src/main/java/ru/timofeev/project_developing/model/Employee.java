@@ -3,7 +3,7 @@ package ru.timofeev.project_developing.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Getter
 @Setter
@@ -32,4 +32,12 @@ public class Employee {
 
     @Column(name = "birthdate")
     private Date birthDate;
+
+//    @Column(name = "company_position")
+//    @Enumerated(EnumType.STRING)
+//    private CompanyPosition position;
+
+    @ManyToOne
+    @JoinColumn(name = "company_position", nullable = true)
+    private CompanyPosition position;
 }

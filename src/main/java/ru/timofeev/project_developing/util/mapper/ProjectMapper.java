@@ -21,7 +21,7 @@ public class ProjectMapper {
         mappedProject.setDateOfStart(Date.valueOf(projectDTO.getDateOfStart()));
         mappedProject.setFactDateOfEnd(null);
         mappedProject.setPlannedDateOfEnd(Date.valueOf(projectDTO.getPlannedDateOfEnd()));
-        mappedProject.setType(ProjectType.valueOf(projectDTO.getType()));
+//        mappedProject.setType(ProjectType.valueOf(projectDTO.getType()));
         mappedProject.setPlannedPayload(projectDTO.getPlannedPayload());
         mappedProject.setResponsibleLogin(projectDTO.getResponsibleLogin());
         mappedProject.setStatus(ProjectStatus.valueOf(projectDTO.getStatus()));
