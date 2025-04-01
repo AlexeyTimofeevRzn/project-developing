@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список задач</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/main">Главная</a>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h1>Список задач</h1>
+
+    <!-- Кнопка для увеличения нагрузки -->
+    <form th:action="@{/tasks/increase-payload}" method="post" class="mb-4">
+        <button type="submit" class="btn btn-primary">Увеличить нагрузку на 20%</button>
+        <span th:if="${success}" class="text-success ms-3">Нагрузка успешно увеличена!</span>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Номер задачи</th>
+            <th>Описание</th>
+            <th>Фактическая нагрузка</th>
+            <th>Плановая нагрузка</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Итерация по списку задач -->
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.number}"></td>
+            <td th:text="${task.description}"></td>
+            <td>
+                <span th:text="${task.factPayload} ?: 'N/A'"></span>
+            </td>
+            <td th:text="${task.plannedPayload}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
