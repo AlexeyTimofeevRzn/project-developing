@@ -24,16 +24,10 @@ public class PostgresProjectDao implements IProjectDao {
         try (Connection conn = dataSource.getConnection()) {
             // Вызов функции
             try (CallableStatement stmt = conn.prepareCall("{? = call calculate_project_payload(?)}")) {
-                // Регистрация выходного параметра
                 stmt.registerOutParameter(1, Types.NUMERIC);
-
-                // Установка входного параметра
                 stmt.setString(2, projectCode);
 
-                // Выполнение запроса
                 stmt.execute();
-
-                // Получение результата
                 return stmt.getBigDecimal(1).doubleValue();
             }
         } catch (SQLException e) {
